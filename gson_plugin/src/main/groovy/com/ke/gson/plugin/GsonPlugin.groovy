@@ -13,8 +13,8 @@ class GsonPlugin implements Plugin<Project> {
   @Override
   void apply(Project project) {
     // add dependencies
-    project.dependencies.add("compile",
-        "com.github.LianjiaTech:gson-plugin-sdk:1.0.0")
+//    project.dependencies.add("compile",
+//        "com.github.LianjiaTech:gson-plugin-sdk:1.0.0")
 
     // register transform
     project.android.registerTransform(new GsonJarTransform(project))
