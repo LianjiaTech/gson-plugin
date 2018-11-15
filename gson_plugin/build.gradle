@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+apply plugin: 'com.github.dcendents.android-maven' //发布到JitPack
+group='com.github.LianjiaTech' //发布到JitPack
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi() //gradle sdk
+    implementation localGroovy() //groovy sdk
+    implementation 'com.android.tools.build:gradle:3.0.1'  //build tools
+    implementation 'com.android.tools.build:transform-api:1.5.0' //transform
+    implementation 'org.javassist:javassist:3.23.0-GA' //javassist
+}
