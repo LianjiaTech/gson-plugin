@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'com.ke.gson.plugin'
+apply plugin: 'com.ke.gson.plugin'
 
 android {
     compileSdkVersion 26
@@ -27,5 +27,4 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.github.LianjiaTech:gson-plugin-sdk:1.0.0'
 }
