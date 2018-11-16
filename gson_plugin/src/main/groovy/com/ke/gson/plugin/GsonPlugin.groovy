@@ -12,6 +12,12 @@ class GsonPlugin implements Plugin<Project> {
 
   @Override
   void apply(Project project) {
+    
+    // add jitpack repo
+    project.repositories.maven {
+      url "https://jitpack.io"
+    }
+    
     // add dependencies
     project.dependencies.add("compile",
         "com.github.LianjiaTech:gson-plugin-sdk:1.0.0")
