@@ -10,17 +10,30 @@ Android主要开发语言是Java，属于强数据类型语言，不少公司后
 2.当某个字段解析失败的时候，通过观察者模式，将异常抛出，开发者在收到异常后可以进行相应的处理（如将异常日志上传到服务器，然后推动服务端RD解决）。
 
 # 接入方法
-1.工程根目录build.gradle加入ClassPath  
+1.工程根目录加入repositories
 ```
-dependencies {
- classpath 'com.ke.gson.plugin:gson_plugin:1.3.0'
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
-2.工程app目录build.gradle加入依赖  
+2.工程根目录build.gradle加入ClassPath  
+```
+dependencies {
+ classpath 'com.github.LianjiaTech:gson-plugin:2.0.1'
+}
+```
+3.工程app目录build.gradle加入依赖  
 ```
 apply plugin: 'com.ke.gson.plugin'
 ```
-3.可选调用（监听异常json字段，建议收到后上报给服务器）
+4.可选调用（监听异常json字段，建议收到后上报给服务器）
 ```
 ReaderTools.setListener(new ReaderTools.JsonSyntaxErrorListener() {
   @Override
