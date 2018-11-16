@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.ke.gson.plugin'
+//apply plugin: 'com.ke.gson.plugin'
 
 android {
     compileSdkVersion 26
