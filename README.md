@@ -39,6 +39,7 @@ ReaderTools.setListener(new ReaderTools.JsonSyntaxErrorListener() {
 # 注意事项
 1.如果也apply了其它plugin插件，请把 apply plugin: 'com.ke.gson.plugin' 加入到其它apply之前  
 原因：gson_plugin只会处理file.name包含gson的jar包，有的插件会将jar文件进行merge，统一输出为一个jar包，导致gson_plugin匹配不到，从而不会对该文件进行处理。  
+
 2.如果引用了SNAPSHOT版本，请不要使用本地缓存  
 工程根目录的build.gradle与app目录的build.gradle都得加入  
 ```
@@ -46,6 +47,7 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 ```  
+
 3.编译失败怎么办  
 taskkill /im java.exe /f  然后clean，重新build  
 
@@ -65,8 +67,10 @@ public class TestBean {
 ```
 使用原生gson结果：  
 第1次：1374ms，第2次：1430ms，第3次：1429ms，平均：1411ms  
+
 使用gson-plugin结果：  
 第1次：1503ms，第2次：1381ms，第3次：1418ms，平均：1434ms  
+
 结论：  
 gson-plugin比原生gson解析，效率略低（多执行了几行判断逻辑代码），但可忽略不计
 
