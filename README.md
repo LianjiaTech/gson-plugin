@@ -45,7 +45,7 @@ ReaderTools.setListener(new ReaderTools.JsonSyntaxErrorListener() {
  }
 });
 ```
-4.添加混淆keep
+5.添加混淆keep
 ```
 -keep class com.google.gson.** { *; }
 -keep class com.ke.gson.** { *; }
