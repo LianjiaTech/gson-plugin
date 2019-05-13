@@ -27,7 +27,7 @@ allprojects {
 2.工程根目录build.gradle加入ClassPath  
 ```
 dependencies {
- classpath 'com.github.LianjiaTech:gson-plugin:2.0.1'
+ classpath 'com.github.LianjiaTech:gson-plugin:2.1.0'
 }
 ```
 3.工程app目录build.gradle加入依赖  
