@@ -1,8 +1,10 @@
 package com.ke.gson.plugin.inject.jar
 
 import com.android.build.api.transform.Context
+import com.android.build.api.transform.JarInput
 import com.ke.gson.plugin.inject.jar.adapter.InjectArrayTypeAdapter
 import com.ke.gson.plugin.inject.jar.adapter.InjectCollectionTypeAdapterFactory
+import com.ke.gson.plugin.inject.jar.adapter.InjectGsonTypeAdapter
 import com.ke.gson.plugin.inject.jar.adapter.InjectTypeAdapters
 import com.ke.gson.plugin.inject.jar.adapter.InjectMapTypeAdapterFactory
 import com.ke.gson.plugin.inject.jar.adapter.InjectReflectiveTypeAdapterFactory
@@ -18,8 +20,10 @@ import org.gradle.api.Project
 
 class InjectGsonJar {
 
-  public static File inject(File jarFile, Context context, Project project) throws NotFoundException {
-    if (!jarFile.name.contains("gson")) {
+  public static File inject(JarInput jarInput, Context context, Project project) throws NotFoundException {
+    def jarInputName = jarInput.name
+    File jarFile = jarInput.file
+    if (!jarFile.name.startsWith("gson") && !jarInputName.startsWith("com.google.code.gson:gson")) {
       return null
     }
     println("GsonPlugin: inject gson jar start")
@@ -42,6 +46,7 @@ class InjectGsonJar {
     InjectArrayTypeAdapter.inject(tmpDirPath)
     InjectCollectionTypeAdapterFactory.inject(tmpDirPath)
     InjectTypeAdapters.inject(tmpDirPath)
+    InjectGsonTypeAdapter.inject(tmpDirPath)
 
     //重新压缩
     Compressor.compress(tmpDirPath, targetPath)

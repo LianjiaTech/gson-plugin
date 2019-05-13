@@ -19,7 +19,7 @@ class GsonPlugin implements Plugin<Project> {
     }
     
     // add dependencies
-    project.dependencies.add("compile",
+    project.dependencies.add("api",
         "com.github.LianjiaTech:gson-plugin-sdk:1.0.0")
 
     // register transform

@@ -51,18 +51,18 @@ class GsonJarTransform extends Transform {
     for (TransformInput input : transformInvocation.getInputs()) {
       for (JarInput jarInput : input.getJarInputs()) {
         // name must be unique，or throw exception "multiple dex files define"
-        def jarName = jarInput.name
-        if (jarName.endsWith('.jar')) {
-          jarName = jarName.substring(0, jarName.length() - 4)
+        def jarInputName = jarInput.name
+        if (jarInputName.endsWith('.jar')) {
+          jarInputName = jarInputName.substring(0, jarInputName.length() - 4)
         }
         def md5Name = DigestUtils.md5Hex(jarInput.file.getAbsolutePath())
         //source file
-        File file = InjectGsonJar.inject(jarInput.file, transformInvocation.context, mProject)
+        File file = InjectGsonJar.inject(jarInput, transformInvocation.context, mProject)
         if (file == null) {
           file = jarInput.file
         }
         //dest file
-        File dest = outputProvider.getContentLocation(jarName + md5Name,
+        File dest = outputProvider.getContentLocation(jarInputName + md5Name,
             jarInput.contentTypes, jarInput.scopes, Format.JAR)
         FileUtils.copyFile(file, dest)
       }
