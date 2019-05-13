@@ -11,6 +11,9 @@ public class TestBean {
 
   public String name;
   public int age;
+  public float var1;
+  public double var2;
+  public String var3;
   public String sex;
   public boolean is_success;
 

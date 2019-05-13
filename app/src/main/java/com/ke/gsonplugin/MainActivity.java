@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         String testStr = new Gson().toJson(testBean);
         Log.d("test", "str: " + testStr);
-        testStr = "{\"age\":20,\"is_success\":true,\"sex\":\"girl\",\"bean\":{\"age\":18.8,\"is_success\":1,\"array\":{},\"list\":[\"list1\",\"list2\"],\"sex\":\"boy\",\"map\":\"\",\"name\":\"test1\"},\"name\":\"test2\"}";
+        testStr = "{\"age\":20,\"is_success\":true,\"sex\":\"girl\",\"bean\":{\"age\":18.8,\"var1\":\"a\",\"var2\":\"b\",\"var3\":[],\"is_success\":1,\"array\":{},\"list\":[\"list1\",\"list2\"],\"sex\":\"boy\",\"map\":\"\",\"name\":\"test1\"},\"name\":\"test2\"}";
 
         TestBean resultBean = new Gson().fromJson(testStr, TestBean.class);
         Log.d("test", "result bean: " + resultBean);
